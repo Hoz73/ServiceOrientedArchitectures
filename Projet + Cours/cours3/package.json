@@ -1,0 +1,18 @@
+{
+  "name": "cours3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "GraphQL.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-graphql": "^0.12.0",
+    "firebase": "^8.2.3",
+    "graphql": "^15.4.0",
+    "isomorphic-fetch": "^3.0.0"
+  }
+}

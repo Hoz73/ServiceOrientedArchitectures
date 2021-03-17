@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="ServiceREST:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>ServiceREST</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="ServiceREST-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="ServiceREST:war exploded" />
+    </root>
+  </artifact>
+</component>

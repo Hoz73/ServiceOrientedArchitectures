@@ -1,0 +1,50 @@
+<li class="list-group-item" style="margin-bottom: 10px; border-width: 5px; border-radius: 20px;">
+    <h4>Produit : {{ getProduit() }}</h4> 
+    <h4>Prix : {{ getPrix() }} €</h4> 
+    <h4> Nom : {{ getachteurNom() }}</h4>
+
+    <input type="text" placeholder="le nom de l'achteur" class="form-control" [(ngModel)]="achteurNom" style="margin-top: 10px;">
+    <input type="text" placeholder="distance par KM" class="form-control" [(ngModel)]="distance" style="margin-top: 10px; margin-bottom: 30px;" >
+
+    <button class="btn btn-success"
+            (click)="getREST()"
+            style="margin-top: 2px; margin-bottom: 10px;">
+            calculer le prix total
+    </button>
+
+    <h4> le prix total (prix + livraison) : {{ getPrixTotal() }} €</h4>
+    
+    <button class="btn btn-primary"
+            (click)="afficheToogleCarte()"
+            style="margin-top: 5px;">
+            Afficher le payment
+    </button>
+</li>
+<div [hidden]="afficheCarte" class="checkout_form">
+        <div class="card_number" id="card-container">
+                <input type="text" placeholder="Numero de la certe de payment" [(ngModel)]="numeroCarte" class="input" style="margin-top: 20px;">
+        </div>
+        <div class="card_grp" >
+               <div class="expiry_date">
+                        <input type="number" minlength="1" maxlength="2" min="1" max="31" placeholder="jour" class="expiry_input" [(ngModel)]="expiryJour" style="margin-top: 10px;">
+                        <input type="number" minlength="1" maxlength="2" min="1" max="12" placeholder="mois" class="expiry_input" [(ngModel)]="expiryMois" style="margin-top: 10px;"> 
+               </div>
+               <div class="cvv">
+                        <input type="text" minlength="1" maxlength="3" min="0" max="999" placeholder="cvv" class="cvv_input" [(ngModel)]="cvv" style="  margin-top: 10px;">
+                        <div class="cvv_img">?
+                                <div class="img">
+                                        <img src="assets/images/cvv.png" alt="CVV">
+                                </div>
+                        </div>
+               </div>
+        </div>
+        <button class="btn btn-success" 
+                style="width: 100%; margin-top: 10px;"
+                (click)="getRestPayer()">
+                Payer
+        </button>
+
+        <div [hidden]="resPaymentToogle" class="checkout_form" style="  margin-top: 10px;" >
+                <h5> Carte Valide :  {{ getResPayment() }}</h5>
+        </div>
+</div>
