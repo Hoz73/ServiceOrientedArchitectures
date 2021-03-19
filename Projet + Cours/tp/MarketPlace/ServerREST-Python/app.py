@@ -3,6 +3,8 @@ from flask import jsonify
 from flask import request
 from zeep import Client
 from flask_cors import CORS
+import requests
+import json
 
 ProductDB = [
 {
@@ -26,7 +28,7 @@ CORS(app)
 def welcome():
     return "welcome to python web service"
 
-@app.route("/product/getProducts",methods=['GET'])
+'''@app.route("/product/getProducts",methods=['GET'])
 def getProducts():
     return jsonify({"products " : ProductDB})
 
@@ -62,7 +64,7 @@ def removeStudent(name):
     product = [prod for prod in ProductDB if(prod['name'] == name)]
     if(len(product) > 0):
         ProductDB.remove(product[0])
-    return jsonify({"product " : product})
+    return jsonify({"product " : product})'''
 
 
 
@@ -106,6 +108,14 @@ def carteVerification(numero,jour,mois,cvv):
         print("Invalid cart Number")
         return "False"
 
+@app.route("/products",methods=['GET'])
+def getProducts():
+    urlGraphQL = "https://mp-graphql.azurewebsites.net/products"
+    resp = requests.get(urlGraphQL)
+    data =  resp.text
+    print(data)
+    return data
+
 #if(__name__=="__main__"):
-#app.run()
+    #app.run(port=9876)
 

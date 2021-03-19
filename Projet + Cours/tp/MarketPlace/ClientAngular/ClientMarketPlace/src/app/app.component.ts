@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-
+import { Observable, throwError } from 'rxjs';
 import { Prod } from 'src/app/prod.model';
 import { ProdService } from 'src/app/prod.service';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -19,9 +20,11 @@ export class AppComponent {
   ];*/
 
   products: any[] | undefined;
+  posts : Observable<any> | undefined
 
   constructor(
-    private prodService: ProdService
+    private prodService: ProdService,
+    private http: HttpClient
   ) { }
 
   ngOnInit(): void {
@@ -34,6 +37,15 @@ export class AppComponent {
       })
     });
   }
+
+ /* ngOnInit(): void {
+    var url = "https://mp-api-rest-ql.azurewebsites.net/products"
+    this.posts = this.http.get(url);
+    this.posts.forEach(async (value) => {
+      this.products = value['products'];
+      console.log(this.products); 
+    });   
+  } */
 
   create(product: Prod){
     this.prodService.createProduct(product);
